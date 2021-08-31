@@ -1,23 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+import {useDispatch, useSelector} from 'react-redux'
+import {action} from './redux/action'
 
 function App() {
+  const dispatch = useDispatch()
+  const data = useSelector(state => state?.data)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={() => dispatch(action)}>click to dispatch action</button>
+      <button onClick={() => console.log(data[0].data)}>click to get data from state via selector (after dispatch)</button>
+      {/* line 13 just logs the data from state to the console, no real use */}
+      <p>{data && data[0].data}</p>
+      {/* line 15 makes sure the data exists first before rendering on page */}
     </div>
   );
 }

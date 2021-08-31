@@ -1,0 +1,1 @@
+export const action = ({type: "success", payload: [{data: "this should be added to state"}]})
